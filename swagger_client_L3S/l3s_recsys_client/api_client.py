@@ -1,6 +1,6 @@
 # coding: utf-8
 """
-    L3S Gateway for SEARCH
+    L3S Recommendation Service for SEARCH
 
     Welcome to the Swagger UI documentation site!  # noqa: E501
 
@@ -22,9 +22,9 @@ import tempfile
 import six
 from six.moves.urllib.parse import quote
 
-from l3s_swagger_client.configuration import Configuration
-import l3s_swagger_client.models
-from l3s_swagger_client import rest
+from l3s_recsys_client.configuration import Configuration
+import l3s_recsys_client.models
+from l3s_recsys_client import rest
 
 
 class ApiClient(object):
@@ -257,7 +257,7 @@ class ApiClient(object):
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(l3s_swagger_client.models, klass)
+                klass = getattr(l3s_recsys_client.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

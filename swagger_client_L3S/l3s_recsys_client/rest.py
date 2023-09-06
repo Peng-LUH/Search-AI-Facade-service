@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    L3S Search Service for SEARCH
+    L3S Recommendation Service for SEARCH
 
-    Welcome to the Swagger UI documentation site test!  # noqa: E501
+    Welcome to the Swagger UI documentation site!  # noqa: E501
 
     OpenAPI spec version: 0.0.1
     

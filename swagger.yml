@@ -187,34 +187,93 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchLearningUnitListDto'
-  /upstream/test_upstream:
+  # /upstream/test_upstream_test:
+  #   get:
+  #     operationId: l3s_gateway.testUP
+  #     tags:
+  #       - L3S Services
+  #     summary: Test of UpStreamService.
+  #     description: Test of UpStreamService.
+  #     responses:
+  #       "200": # status code
+  #         description: Return an skill with given ID
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/SkillDto'
+  # /downstream/test_downstream:
+  #   get:
+  #     operationId: l3s_gateway.testDown
+  #     tags:
+  #       - L3S Services
+  #     summary: Test of DownService.
+  #     description: Test of DownService.
+  #     responses:
+  #       "200": # status code
+  #         description: Return an skill with given ID
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/SkillDto'
+  /l3s-recsys/test-get:
     get:
-      operationId: l3s_gateway.testUP
+      operationId: l3s_gateway.recsysTestGet
       tags:
         - L3S Services
       summary: Test of UpStreamService.
       description: Test of UpStreamService.
       responses:
         "200": # status code
-          description: Return an skill with given ID
+          description: test get method for l3s recsys service
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SkillDto'
-  /downstream/test_downstream:
-    get:
-      operationId: l3s_gateway.testDown
+                $ref: '#/components/schemas/TestDto'
+  /l3s-recsys/test-post:
+    post:
       tags:
         - L3S Services
-      summary: Test of DownService.
-      description: Test of DownService.
+      operationId: l3s_gateway.recsysTestPost
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TestDto'
+        required: true
       responses:
-        "200": # status code
-          description: Return an skill with given ID
+        201:
+          description: test post method for l3s recsys service
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/SkillDto'                            
+                $ref: '#/components/schemas/TestDto'
+      x-codegen-request-body-name: payload
+  /l3s-recsys/random:
+    post:
+      tags:
+        - L3S Services
+      operationId: l3s_gateway.recsysRandom
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RandomRequest'
+        required: true
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RandomResponse'
+        201:
+          description: Success
+          content: {}
+        400:
+          description: Number of recommendation is either negative or exceed the number
+            of existing contents
+          content: {}
+      x-codegen-request-body-name: payload
 
 components:
   securitySchemes:
@@ -873,3 +932,25 @@ components:
         - name
         - year
         - userId
+    TestDto:
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          type: string
+    RandomRequest:
+      required:
+        - num_of_rec
+      type: object
+      properties:
+        num_of_rec:
+          type: integer
+    RandomResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: string
+    

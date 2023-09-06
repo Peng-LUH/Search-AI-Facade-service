@@ -1,9 +1,9 @@
 # coding: utf-8
 
 """
-    L3S Search Service for SEARCH
+    L3S Recommendation Service for SEARCH
 
-    Welcome to the Swagger UI documentation site test!  # noqa: E501
+    Welcome to the Swagger UI documentation site!  # noqa: E501
 
     OpenAPI spec version: 0.0.1
     
@@ -46,7 +46,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
     def __init__(self):
         """Constructor"""
         # Default Base url
-        self.host = "/l3s-search"
+        self.host = "/l3s-recsys"
         # Temp file folder for downloading files
         self.temp_folder_path = None
 
@@ -63,7 +63,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         self.password = ""
         # Logging Settings
         self.logger = {}
-        self.logger["package_logger"] = logging.getLogger("l3s_search_swagger_client")
+        self.logger["package_logger"] = logging.getLogger("l3s_recsys_client")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         # Log format
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
